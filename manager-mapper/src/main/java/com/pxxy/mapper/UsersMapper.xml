@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pxxy.mapper.UsersMapper"><!--使用mapper接口后，namespace为Mapper接口的全类名 -->
+    <!--开启本mapper的二级缓存：即一个namespace就有一个二级缓存，本mapper内的多个sessiongongxiang
+    type:指定cache接口实现类的类型，mybatis默认使用PerpetualCahe
+    要和ehCache整合，需要配置type为ehCache的实现接口的类型
+    使用sqlsession操作数据库时，mapper的namespace:可以自己随意取名；比如namespace="test",selectOne or selectList调用时，test.select标签的id。
+    id:标识映射文件中的sql,将sql语句封装到mappedStatement对象中，所以将id称为statement的id
+     -->
+    <insert id="insertUsers" parameterType="com.pxxy.pojo.Users">
+        insert into users(username,userage) values(#{username},#{userage})
+    </insert>
+    <select id="selectUsers" resultType="com.pxxy.pojo.Users">
+        select * from users
+    </select>
+</mapper>
